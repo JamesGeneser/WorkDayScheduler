@@ -4,12 +4,72 @@
 
 $(document).ready(function () {
     // TODO: Add a listener for click events on the save button. This code should
-    var saveBtn = $("#saveBtn");
-    saveBtn.click(console.log("test button"))
-  
-    var inputSection = $(".hour")
-    localStorage.setItem("input",inputSection)
+
+    //////////////SAVE_BUTTON
+    // var saveBtn9 = $("#hour-9 .btn");
+    // var saveBtn10 = $("#hour-10 .btn");
+
+    $(".saveBtn").on("click", function () {
+        var hour = $(this).parent().attr("id");
+
+        var input = $(this).siblings("textarea").val();
+
+
+        localStorage.setItem(hour,input);
+
+       
+
+
+
+    })
+
+    // saveBtn.click(buttonTester)
+    // function buttonTester(){console.log("test button")}
+
+    // var check9 = localStorage.getItem("input-hour-9")
+    // console.log(check9)
+    
+
+
     // use the id in the containing time-block as a key to save the user input in
+    // function renderInputContent() {
+    //     var textArea9 = $("#hour-9 textarea").val();
+    //     console.log(textArea9)
+    //     if ((textArea9) !== null) {
+    //         textArea9 = localStorage.getItem("hour-9")
+    //         console.log(textArea9)
+            
+    //     }
+        
+    // }
+
+    // renderInputContent()
+
+
+    var currentHour = dayjs().hour()
+
+    var numFive = $("#hour-5").attr("id").slice(5)
+    console.log(numFive)
+
+    $(".time-block").each(function(){
+        var timeBlock = $(this).attr("id").slice(5)
+        console.log(timeBlock)
+        
+        if (timeBlock == currentHour){
+            this.removeAttribute("class")
+            this.setAttribute("class","present")
+            console.log(this)
+        }
+
+
+   
+     })
+    
+
+
+
+
+
     // local storage. HINT: What does `this` reference in the click listener
     // function? How can DOM traversal be used to get the "hour-x" id of the
     // time-block containing the button that was clicked? How might the id be
