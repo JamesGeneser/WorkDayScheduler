@@ -17,9 +17,6 @@ $(document).ready(function () {
 
         localStorage.setItem(hour,input);
 
-       
-
-
 
     })
 
@@ -32,6 +29,7 @@ $(document).ready(function () {
 
 
     // use the id in the containing time-block as a key to save the user input in
+    
     // function renderInputContent() {
     //     var textArea9 = $("#hour-9 textarea").val();
     //     console.log(textArea9)
@@ -47,20 +45,30 @@ $(document).ready(function () {
 
 
     var currentHour = dayjs().hour()
-
-    var numFive = $("#hour-5").attr("id").slice(5)
-    console.log(numFive)
+    console.log(currentHour)
 
     $(".time-block").each(function(){
         var timeBlock = $(this).attr("id").slice(5)
         console.log(timeBlock)
         
         if (timeBlock == currentHour){
-            this.removeAttribute("class")
-            this.setAttribute("class","present")
-            console.log(this)
+ 
+            $(this).removeClass("past")
+            $(this).removeClass("future")
+            $(this).addClass("present")
         }
-
+        if (timeBlock < currentHour){
+ 
+            $(this).removeClass("present")
+            $(this).removeClass("future")
+            $(this).addClass("past")
+        }
+        if (timeBlock > currentHour){
+ 
+            $(this).removeClass("past")
+            $(this).removeClass("present")
+            $(this).addClass("future")
+        }
 
    
      })
