@@ -9,6 +9,13 @@ $(document).ready(function () {
     // var saveBtn9 = $("#hour-9 .btn");
     // var saveBtn10 = $("#hour-10 .btn");
 
+    // $("#currentDay").text() = dayjs().date()
+    $("#currentDay").text(dayjs().format("ddd, MMM D, YYYY h:mm A"))
+    
+    
+
+
+
     $(".saveBtn").on("click", function () {
         var hour = $(this).parent().attr("id");
 
@@ -20,28 +27,24 @@ $(document).ready(function () {
 
     })
 
-    // saveBtn.click(buttonTester)
-    // function buttonTester(){console.log("test button")}
 
-    // var check9 = localStorage.getItem("input-hour-9")
-    // console.log(check9)
-    
 
 
     // use the id in the containing time-block as a key to save the user input in
     
-    // function renderInputContent() {
-    //     var textArea9 = $("#hour-9 textarea").val();
-    //     console.log(textArea9)
-    //     if ((textArea9) !== null) {
-    //         textArea9 = localStorage.getItem("hour-9")
-    //         console.log(textArea9)
-            
-    //     }
-        
-    // }
+    
+    
 
-    // renderInputContent()
+
+        // var textArea9 = $("#hour-9 textarea").val();
+     
+        // if ((textArea9) !== null) {
+        //     textArea9 = localStorage.getItem("hour-9")
+ 
+            
+        // }
+        
+  
 
 
     var currentHour = dayjs().hour()
@@ -49,7 +52,7 @@ $(document).ready(function () {
 
     $(".time-block").each(function(){
         var timeBlock = $(this).attr("id").slice(5)
-        console.log(timeBlock)
+        
         
         if (timeBlock == currentHour){
  
@@ -73,8 +76,34 @@ $(document).ready(function () {
    
      })
     
+     
+
+     $(".time-block .description").each(function(){
+        // var allHours = JSON.stringify($(this).parent().attr("id"))
+        // console.log(allHours)
+        // console.log(localStorage.getItem("hambone"))
+        if($("#hour-9 .description").val("")){
+        $("#hour-9 .description").val(localStorage.getItem("hour-9"))
+        $("#hour-10 .description").val(localStorage.getItem("hour-10"))
+        $("#hour-11 .description").val(localStorage.getItem("hour-11"))
+        $("#hour-12 .description").val(localStorage.getItem("hour-12"))
+        $("#hour-13 .description").val(localStorage.getItem("hour-13"))
+        $("#hour-14 .description").val(localStorage.getItem("hour-14"))
+        $("#hour-15 .description").val(localStorage.getItem("hour-15"))
+        $("#hour-16 .description").val(localStorage.getItem("hour-16"))
+        $("#hour-17 .description").val(localStorage.getItem("hour-17"))
+        }
+       
+        
+        
+        
+        // if ($(this).val("")){
+        //     console.log(localStorage.key(i))
+      
+        // }
 
 
+    })
 
 
 
